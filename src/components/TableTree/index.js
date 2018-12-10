@@ -6,7 +6,7 @@ const TableTree = {
   props: {
     // ...ElTable.props,
     className: [String, Object],
-    style: {
+    styleStr: {
       type: String,
       default: "width: 100%"
     },
@@ -132,7 +132,7 @@ const TableTree = {
     } = this;
 
     return (
-      <div class={["table-tree", this.className]} style={this.style}>
+      <div class={["table-tree", this.className]} style={this.styleStr}>
         {header}
         <table
           width={this.width}
@@ -202,7 +202,7 @@ const TableTree = {
     renderTableRows(tableData, depth = 0) {
       const { rowKey = "", rowClassName } = this;
 
-      return tableData.map((row, index) => {
+      return tableData && tableData.length && tableData.map((row, index) => {
         let rowClass = rowClassName
         if (typeof rowClassName === 'function') rowClass = rowClassName(row, index)
 
