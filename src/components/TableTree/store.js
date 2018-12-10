@@ -28,6 +28,37 @@ const toggleRowExpansion = function(state, row, expanded) {
   return changed;
 };
 
+const toggleRowSelection = function(state, row, selected) {
+  let changed = false;
+  const selectRows = state.selectRows;
+
+  if (typeof selected !== "undefined") {
+    const index = selectRows.indexOf(row);
+    if (selected) {
+      if (index === -1) {
+        selectRows.push(row);
+        changed = true;
+      }
+    } else {
+      if (index !== -1) {
+        selectRows.splice(index, 1);
+        changed = true;
+      }
+    }
+  } else {
+    const index = selectRows.indexOf(row);
+    if (index === -1) {
+      selectRows.push(row);
+      changed = true;
+    } else {
+      selectRows.splice(index, 1);
+      changed = true;
+    }
+  }
+
+  return changed;
+};
+
 const getKeysMap = function(array, rowKey) {
   const arrayMap = {};
   (array || []).forEach((row, index) => {
@@ -36,7 +67,7 @@ const getKeysMap = function(array, rowKey) {
   return arrayMap;
 };
 
-const getRowIdentity = (row, rowKey) => {
+const getRowIdentity = function (row, rowKey){
   if (!row) throw new Error("row is required when get row identity");
   if (typeof rowKey === "string") {
     if (rowKey.indexOf(".") < 0) {
@@ -53,18 +84,43 @@ const getRowIdentity = (row, rowKey) => {
   }
 };
 
+export const geneFlattenArrayFromTreeByDepth = (
+  tree,
+  maxDepth,
+  currDepth = 0,
+  res = []
+) => {
+  let i = 0;
+  let item = null;
+  const l = tree.length;
+
+  if (currDepth >= maxDepth) return (currDepth = 0) || []
+
+  for(; i < l; i++) {
+    item = tree[i]
+    res[res.length] = item
+
+    if (item && item.children && item.children.length) {
+      geneFlattenArrayFromTreeByDepth(item.children, maxDepth, currDepth + 1, res)
+    }
+  }
+
+  return res;
+};
 
 export default class TableState {
-  constructor(initialState) {
+  constructor(table, initialState) {
+    this.table = table;
     this.states = {
       data: null,
       columns: "",
       rowKey: "",
-      selectedRowsKeys: [],
+      selectRows: [],
       expandRows: [],
-      expandRowKeys: [],
+      expandDepth: 0,
       defaultExpandAll: false,
     };
+    // console.log(this.states)
     this.setState(initialState);
   }
 
@@ -83,11 +139,28 @@ export default class TableState {
   /* 切换当前行展开收起状态 */
   toggleRowExpansion(row, expanded) {
     const changed = toggleRowExpansion(this.states, row, expanded);
+
     if (changed) {
-      // eslint-disable-next-line
-      console.log('toggleRowExpansion has changed')
-      // this.table.$emit("expand-change", row, this.states.expandRows);
-      // this.scheduleLayout();
+      this.table.$emit("expand-change", row, this.states.expandRows);
+    }
+  }
+
+  isRowSelected(row) {
+    const { selectRows = [], rowKey } = this.states;
+
+    if (rowKey) {
+      const expandMap = getKeysMap(selectRows, rowKey);
+      return !!expandMap[getRowIdentity(row, rowKey)];
+    }
+
+    return selectRows.indexOf(row) !== -1;
+  }
+
+  toggleRowSelection(row, selected) {
+    const changed = toggleRowSelection(this.states, row, selected);
+
+    if (changed) {
+      this.table.$emit("select-change", row, this.states.selectRows);
     }
   }
 
@@ -106,21 +179,29 @@ export default class TableState {
     }
   }
 
-  _setData(state, data) {
+  _setData(states, data) {
     // eslint-disable-next-line
-    const dataInstanceChanged = state._data !== data;
-    state._data = data;
-    state.data = data;
+    const dataInstanceChanged = states._data !== data;
+    states._data = data;
+    states.data = data;
 
-    const rowKey = state.rowKey;
-    const defaultExpandAll = state.defaultExpandAll;
-    if (defaultExpandAll) {
-      this.states.expandRows = (state.data || []).slice(0);
+    const rowKey = states.rowKey;
+    const expandDepth = states.expandDepth;
+    const defaultExpandAll = states.defaultExpandAll;
+
+    // keep expand rows
+    if (defaultExpandAll) { /* Does not support this attribute */
+      this.states.expandRows = (states.data || []).slice(0);
+    } else if (expandDepth) {
+      this.states.expandRows = geneFlattenArrayFromTreeByDepth(
+        (states.data || []),
+        expandDepth,
+      ).slice(0)
     } else if (rowKey) {
       // update expandRows to new rows according to rowKey
       const ids = getKeysMap(this.states.expandRows, rowKey);
       let expandRows = [];
-      for (const row of state.data) {
+      for (const row of states.data) {
         const rowId = getRowIdentity(row, rowKey);
 
         if (ids[rowId]) {
@@ -133,7 +214,23 @@ export default class TableState {
       // clear the old rows
       this.states.expandRows = [];
     }
+/*
+    // const selectRows = states.selectRows
+    if (this.selectRows && this.selectRows.length) {
+      const ids = getKeysMap(this.states.selectRows, rowKey);
+      let selectRows = []
+      for (const row of states.data) {
+        const rowId = getRowIdentity(row, rowKey);
 
+        if (ids[rowId]) {
+          expandRows.push(row);
+        }
+      }
+
+      // The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included).
+      this.states.selectRows = selectRows
+    }
+ */
     // Vue.nextTick(() => this.table.updateScrollY());
   }
 }

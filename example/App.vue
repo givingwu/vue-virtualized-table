@@ -7,7 +7,7 @@
       title="table-tree"
       desc="推荐使用"
       :good="[`columns 完全定制化`, `完全重写 el-table`]"
-      :bad="[`需要学习额外的 TableStore API`]"
+      :bad="[`需要学习几个额外的 TableStore API`]"
     >
       <table-tree
         v-loading="tableLoading"
@@ -27,7 +27,6 @@
     <desc-pannel
       title="table-tree-depth"
       desc="Use element-ui `Table` component and render itself recursively."
-      :good="[`递归扩展，代码量少，可定制性高`, `支持自定义扩展、渲染深度，自定义渲染 table-column 'render'`]"
     >
       <table-tree-depth
         v-loading="tableLoading"
@@ -48,8 +47,6 @@
     <desc-pannel
       title="table-tree-recursive"
       desc="Use element-ui `Table` component and write itself recursively."
-      :good="[`可定制性高`, `table-column type可根据不同深度定制` ]"
-      :bad="[`非递归扩展，代码量多`, `table-column 不支持自定义 cell render`]"
     >
       <table-tree-recursive
         class="tree-table-view"

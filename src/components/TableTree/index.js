@@ -1,4 +1,4 @@
-import TableStore from "./store";
+import TableStore, { geneFlattenArrayFromTreeByDepth } from "./store";
 
 const TableTree = {
   name: "VCTableTree",
@@ -6,7 +6,7 @@ const TableTree = {
   props: {
     // ...ElTable.props,
     className: [String, Object],
-    styleStr: {
+    style: {
       type: String,
       default: "width: 100%"
     },
@@ -56,18 +56,18 @@ const TableTree = {
       type: Number,
       default: 10
     }, */
-    expandDepth: {/* Expand Depth  */
+    expandDepth: {/* Expand Depth */
       type: Number,
       default: 1
     },
-    expandRowKeys: {/* Expand Row Keys  */
+    expandRows: {/* Expand Rows */
       type: Array,
       default() {
         return [];
       }
     },
     // Selection
-    selectedRowsKeys: {/* Selection Row Keys  */
+    selectRows: {/* Select Rows */
       type: Array,
       default() {
         return []
@@ -76,17 +76,17 @@ const TableTree = {
   },
 
   data() {
-    const store = new TableStore({
+    const store = new TableStore(this, {
       data: this.dataSource,
       columns: this.columns,
       rowKey: this.rowKey,
       expandDepth: this.expandDepth,
-      expandRowKeys: this.expandRowKeys,
-      selectedRowsKeys: this.selectedRowsKeys,
+      expandRows: this.expandRows,
+      selectRows: this.selectRows,
     });
 
     return {
-      store
+      store,
     };
   },
 
@@ -102,26 +102,6 @@ const TableTree = {
         } */
       }
     },
-
-    /* expandDepth: {
-      immediate: true,
-      handler(value) {
-        if (value) {``
-          const expandRows = geneExpandRows(this, this.store.data, value)
-          // const expandRowsKeys = geneExpandRows.call(this, this.store.data, value)
-          this.store.setState({ expandRows });
-        }
-      }
-    }, */
-
-    expandRowKeys: {
-      immediate: true,
-      handler(value) {
-        if (value) {
-          this.store.setState({ expandRowKeys: value });
-        }
-      }
-    }
   },
 
   computed: {
@@ -152,9 +132,11 @@ const TableTree = {
     } = this;
 
     return (
-      <div class="table-tree">
+      <div class={["table-tree", this.className]} style={this.style}>
         {header}
         <table
+          width={this.width}
+          height={this.height}
           class={[
             "el-table",
             {
@@ -169,7 +151,7 @@ const TableTree = {
         >
           { this.renderColgroup() }
           {showHeader && this.renderHeader()}
-          <tbody>{this.renderBody(this.tableData)}</tbody>
+          <tbody>{this.renderTableRows(this.tableData)}</tbody>
         </table>
         {footer}
       </div>
@@ -202,9 +184,9 @@ const TableTree = {
           border="0"
         >
           <tr class="el-table__row">
-            {tableColumns.map(({ prop, label, key }) => (
+            {tableColumns.map(({ prop, label = '', key = '' }) => (
               <th
-                key={label || prop || key}
+                key={[label, prop, key].join(':')}
                 colspan="1"
                 rowspan="1"
                 class="is-leaf"
@@ -217,7 +199,7 @@ const TableTree = {
       );
     },
 
-    renderBody(tableData, depth = 0) {
+    renderTableRows(tableData, depth = 0) {
       const { rowKey = "", rowClassName } = this;
 
       return tableData.map((row, index) => {
@@ -236,19 +218,19 @@ const TableTree = {
             key={row[rowKey] || index}
             class={classNames}
           >
-            {this.renderColumn(row, index, depth)}
+            {this.renderDataCells(row, index, depth)}
           </tr>,
           this.store.isRowExpanded(row) &&
-          this.renderBody(row.children, depth + 1)
+          this.renderTableRows(row.children, depth + 1)
         ]
       })
     },
 
-    renderColumn(row, rowIndex, depth = 0) {
+    renderDataCells(row, rowIndex, depth = 0) {
       const { tableColumns = [], rowKey = "" } = this;
 
       return tableColumns.map((column, columnIndex) => {
-        const { prop, key, render, /* width, minWidth, */ } = column;
+        const { prop, render, /* width, minWidth, */ } = column;
         const cell =
           typeof render === 'function' &&
           render(this.$createElement /* alias for h */, {
@@ -262,7 +244,7 @@ const TableTree = {
           });
 
         return (
-          <td key={row[rowKey] || key} rowspan="1" colspan="1">
+          <td rowspan="1" colspan="1">
             <div class="cell">{cell || row[prop] || ''}</div>
           </td>
         );

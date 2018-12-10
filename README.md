@@ -1,8 +1,9 @@
 # Table-Tree
-基于 element-ui CSS样式设计的 `Table-Tree` 组件。开放访问 `TableStore`方法，自定义扩展，自定义渲染。
+基于 element-ui CSS样式设计的 `Table-Tree` 组件。
 
 
 ## Feature
+0. 开放访问 `TableStore`方法，可自定义扩展，自定义渲染。代码更少，性能更强。
 1. 通过 column 每一列自定义 `render` 函数 + `TableStore` 暴露的各种方法来操作 table 的数据源 实现各种功能，解决了 element-ui 一列仅支持特定的几个 type 展示的问题。
 2. 通过 Vue 实例的 computed 对象属性 tableData 返回 `TableStore.state.data`，解决了*组件数据源更新*导致*组件状态被更新*的问题。
 3. 支持特定的expand Depth，渲染指定深度的属性接口。
@@ -123,7 +124,7 @@ const columns = [{
 ```
 
 - className
-- style
+- styleStr
 - header, 顶部元素
 - footer, 底部元素
 - expandDepth: number, 指定默认渲染的树的递归深度
