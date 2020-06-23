@@ -9,7 +9,7 @@ The second version of implementation of `vue-virtual-table` component, it was in
 4. Support **customize depth**
 
 ## Usage
-[CodeSandBox demo](https://codesandbox.io/s/vue-resize-observer-vzk4g) or run this project example in Terminal with npm:
+Look the [Demo](https://givingwu.github.io/vue-virtualized-table) or run this project example in Terminal with npm:
 
 ```bash
 npm install
