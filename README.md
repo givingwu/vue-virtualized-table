@@ -247,8 +247,8 @@ export default {
   ellipsis: BOOLEAN_FALSE_PROP,
   expandable: BOOLEAN_FALSE_PROP,
 
-  render: Function, // BodyRowCell Render: VNode|({ store: TableStore, row: RowModel, column: ColumnConfig }) => VNode
-  renderHeader: Function, // HeaderRowCell Render: VNode|({ store, row, column }) => VNode
+  render: Function, // BodyRowCellRender: VNode|({ store: TableStore, row: RowModel, column: ColumnConfig }) => VNode
+  renderHeader: Function, // HeaderRowCellRender: VNode|({ store, row, column }) => VNode
 
   // TODO
   resizable: BOOLEAN_FALSE_PROP

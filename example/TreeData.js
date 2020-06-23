@@ -593,96 +593,249 @@ export default [
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 30
   },
   {
     id: 31,
+=======
+    shopId: Math.random().toString(36).slice(2),
+    children: [{
+      id: 111111,
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }]
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 31
   },
   {
     id: 32,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 32
   },
   {
     id: 33,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 33
   },
   {
     id: 34,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }]
+}, {
+  id: Math.random().toString(36).slice(2),
+  name: '好滋好味鸡蛋仔',
+  category: '江浙小吃、小吃零食',
+  desc: '荷兰优质淡奶，奶香浓而不腻',
+  address: '上海市普陀区真北路',
+  shop: '王小虎夫妻店',
+  shopId: Math.random().toString(36).slice(2)
+}, {
+  id: Math.random().toString(36).slice(2),
+  name: '好滋好味鸡蛋仔',
+  category: '江浙小吃、小吃零食',
+  desc: '荷兰优质淡奶，奶香浓而不腻',
+  address: '上海市普陀区真北路',
+  shop: '王小虎夫妻店',
+  shopId: Math.random().toString(36).slice(2),
+  children: [{
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 34
   },
   {
     id: 35,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 35
   },
   {
     id: 36,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 36
   },
   {
     id: 37,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 37
   },
   {
     id: 38,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }]
+}, {
+  id: Math.random().toString(36).slice(2),
+  name: '好滋好味鸡蛋仔',
+  category: '江浙小吃、小吃零食',
+  desc: '荷兰优质淡奶，奶香浓而不腻',
+  address: '上海市普陀区真北路',
+  shop: '王小虎夫妻店',
+  shopId: Math.random().toString(36).slice(2),
+  children: [{
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 38
   },
   {
     id: 39,
+=======
+    shopId: Math.random().toString(36).slice(2),
+    children: [{
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }]
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 39
   },
   {
     id: 40,
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
     desc: '荷兰优质淡奶，奶香浓而不腻',
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
+<<<<<<< HEAD
     shopId: 40
   } */
 ]
@@ -749,3 +902,266 @@ export const tree = {
     },
   ],
 }
+=======
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }]
+}, {
+  id: Math.random().toString(36).slice(2),
+  name: '好滋好味鸡蛋仔',
+  category: '江浙小吃、小吃零食',
+  desc: '荷兰优质淡奶，奶香浓而不腻',
+  address: '上海市普陀区真北路',
+  shop: '王小虎夫妻店',
+  shopId: Math.random().toString(36).slice(2)
+}, {
+  id: Math.random().toString(36).slice(2),
+  name: '好滋好味鸡蛋仔',
+  category: '江浙小吃、小吃零食',
+  desc: '荷兰优质淡奶，奶香浓而不腻',
+  address: '上海市普陀区真北路',
+  shop: '王小虎夫妻店',
+  shopId: Math.random().toString(36).slice(2),
+  children: [{
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }]
+}, {
+  id: Math.random().toString(36).slice(2),
+  name: '好滋好味鸡蛋仔',
+  category: '江浙小吃、小吃零食',
+  desc: '荷兰优质淡奶，奶香浓而不腻',
+  address: '上海市普陀区真北路',
+  shop: '王小虎夫妻店',
+  shopId: Math.random().toString(36).slice(2),
+  children: [{
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2),
+    children: [{
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }]
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }]
+}]
+
+export const tree = {
+  label: 'root',
+  nodes: [
+    {
+      label: 1
+    },
+    {
+      label: 2,
+      nodes: [
+        {
+          label: 2.1,
+          nodes: [
+            {
+              label: '2.1.1',
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 3,
+      nodes: [
+        {
+          label: 3.1,
+          nodes: [
+            {
+              label: '3.1.1',
+              nodes: [
+                {
+                  label: '3.1.1.1',
+                },{
+                  label: '3.1.1.2',
+                }
+              ]
+            },
+            {
+              label: '3.1.2',
+              nodes: [
+                {
+                  label: '3.1.2.1',
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+export const TableData2 = [{
+  id: 1111,
+  name: '好滋好味鸡蛋仔',
+  category: '江浙小吃、小吃零食',
+  desc: '荷兰优质淡奶，奶香浓而不腻',
+  address: '上海市普陀区真北路',
+  shop: '王小虎夫妻店',
+  shopId: Math.random().toString(36).slice(2),
+  children: [{
+    id: 11111,
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2),
+    children: [{
+      id: 111111,
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }, {
+      id: Math.random().toString(36).slice(2),
+      name: '好滋好味鸡蛋仔',
+      category: '江浙小吃、小吃零食',
+      desc: '荷兰优质淡奶，奶香浓而不腻',
+      address: '上海市普陀区真北路',
+      shop: '王小虎夫妻店',
+      shopId: Math.random().toString(36).slice(2)
+    }]
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }, {
+    id: Math.random().toString(36).slice(2),
+    name: '好滋好味鸡蛋仔',
+    category: '江浙小吃、小吃零食',
+    desc: '荷兰优质淡奶，奶香浓而不腻',
+    address: '上海市普陀区真北路',
+    shop: '王小虎夫妻店',
+    shopId: Math.random().toString(36).slice(2)
+  }]
+}]
+>>>>>>> 2969ce5b3c6811924bf8d74a4845e974ca6f9728
