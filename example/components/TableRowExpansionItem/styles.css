@@ -1,0 +1,26 @@
+.expand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 14px;
+  min-height: 14px;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #909399;
+}
+
+.expand-icon:hover {
+  border: 1px solid #3d82e1;
+}
+
+.expand-icon > i.icon {
+  color: #393939;
+  font-size: 9px;
+}
+
+.expand-icon:hover > i.icon {
+  color: #3d82e1;
+}
