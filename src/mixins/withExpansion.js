@@ -30,6 +30,8 @@ export function data() {
       expandedRowKeys
     }
   }
+
+  return {}
 }
 
 // only watch those properties form `expandable` prop
