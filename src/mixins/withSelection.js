@@ -2,7 +2,7 @@ import { SINGLE_SELECTION_MODE } from '../interface'
 
 export function data() {
   if (this.rowSelection) {
-    const { selectedRowKeys = [] } = this.rowSelection
+    const { selectedRowKeys = [] } = this.rowSelection || {}
 
     // The default select mode is `radio`
     if (!this.rowSelection.type) {
@@ -36,7 +36,7 @@ export const methods = {
     rowKey = this.adaptRowKey(record)
 
     if (rowKey) {
-      const { type, selectedRowKeys } = this.rowSelection || {}
+      const { type, selectedRowKeys = [] } = this.rowSelection || {}
       let isSelected = false
 
       if (type === 'radio') {
