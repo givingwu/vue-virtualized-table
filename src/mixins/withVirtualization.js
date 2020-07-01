@@ -1,3 +1,5 @@
+import { isObject, isValidArray } from '../utils/type'
+
 export function data() {
   return {
     scrollToRowIndex: this.scrollToRow,
@@ -34,14 +36,22 @@ export const computed = {
     )
   },
 
-  entireDataLength() {
-    return Array.isArray(this.entireDataSource)
-      ? this.entireDataSource.length
+  currentDataSource() {
+    if (isObject(this.expandable)) {
+      return this.entireDataSource || []
+    }
+
+    return this.dataSource
+  },
+
+  currentDataLength() {
+    return isValidArray(this.currentDataSource)
+      ? this.currentDataSource.length
       : 0
   },
 
   wrapperSize() {
-    return this.virtualized ? this.entireDataLength * this.rowHeight : 0
+    return this.virtualized ? this.currentDataLength * this.rowHeight : 0
   },
 
   virtualVisibleItemsSize() {
@@ -132,7 +142,7 @@ export const methods = {
     this.__PREV_SCROLL_TOP = scrollTop
 
     this.scrollToRowIndex = start
-    this.virtualizedData = this.entireDataSource.slice(start, end)
+    this.virtualizedData = this.currentDataSource.slice(start, end)
   },
 
   renderVirtualizedWrapper(baseTable) {
