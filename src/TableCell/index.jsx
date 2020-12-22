@@ -154,7 +154,7 @@ export default {
       },
       class: [
         cellPrefixCls,
-        // column ? [column.class, column.className] : [],
+        column ? [column.class, column.className] : [],
         {
           [`${cellPrefixCls}-fix-left`]: isFixLeft,
           [`${cellPrefixCls}-fix-left-first`]: firstFixLeft,
