@@ -1,4 +1,5 @@
 import { isObject, isValidArray } from '../utils/type'
+import { forceScrollTop } from '../utils/dom/scroll'
 
 export function data() {
   return {
@@ -69,12 +70,6 @@ export const computed = {
         )
       : 0
   }
-
-  /* wrapperMaxScrollTop() {
-    return this.virtualized
-      ? this.wrapperScrollTop - this.rowHeight * this.virtualVisibleItemsSize
-      : 0
-  } */
 }
 
 export const watch = {
@@ -82,18 +77,28 @@ export const watch = {
     immediate: true,
     handler(data) {
       if (data && data.length) {
+        if (~this.scrollToRow) {
+          this.updateScrollToRowIndex()
+        }
+
         this.updateVirtualizedData(true)
       } else {
+        this.virtualizedData = []
         this.entireDataSource = []
       }
     }
   },
+
   entireDataSource(data) {
     if (data && data.length) {
       this.updateVirtualizedData(true)
     } else {
       this.virtualizedData = []
     }
+  },
+
+  scrollToRow() {
+    this.updateScrollToRowIndex()
   }
 }
 
@@ -143,6 +148,18 @@ export const methods = {
 
     this.scrollToRowIndex = start
     this.virtualizedData = this.currentDataSource.slice(start, end)
+  },
+
+  updateScrollToRowIndex() {
+    this.$nextTick(() => {
+      if (this.$ready && ~this.scrollToRow && this.rowHeight) {
+        const { scrollBodyRef } = this.$refs
+
+        if (scrollBodyRef) {
+          forceScrollTop(this.scrollToRow * this.rowHeight, scrollBodyRef)
+        }
+      }
+    })
   },
 
   renderVirtualizedWrapper(baseTable) {
