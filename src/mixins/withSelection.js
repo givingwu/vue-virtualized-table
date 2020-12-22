@@ -10,7 +10,7 @@ export function data() {
     }
 
     return {
-      // The below data will be passed in from component props
+      // The below data will be passed in form component props
       selectedRowKeys
     }
   }
@@ -22,7 +22,7 @@ export const methods = {
    * @param {RowKey} rowKey
    */
   isRowSelected(rowKey) {
-    return (this.selectedRowKeys || []).includes(this.adaptRowKey(rowKey))
+    return this.selectedRowKeys.includes(this.adaptRowKey(rowKey))
   },
 
   /**

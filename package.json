@@ -11,7 +11,7 @@
     "src"
   ],
   "dependencies": {
-    "vue-size-observer": "^0.0.1"
+    "vue-size-observer": "^0.0.3"
   },
   "devDependencies": {
     "normalize.css": "^8.0.1",
