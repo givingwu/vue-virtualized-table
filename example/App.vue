@@ -138,6 +138,15 @@ export default {
       dataSource: Object.freeze(dataSource),
       columns: [
         {
+          label: 'index',
+          prop: 'index',
+          width: 100,
+          key: 0,
+          render: (h, { index }) => {
+            return index + 1
+          }
+        },
+        {
           expandable: true,
           label: '商品 ID',
           prop: 'id',
