@@ -8,15 +8,14 @@ import {
 import { isString, isNumber, isObject, isValidArray } from '../utils/type'
 
 export function data() {
+  const childrenColumnName =
+    (isObject(this.expandable) && this.expandable.childrenColumnName) ||
+    'children'
+
+  this.childrenColumnName = childrenColumnName
   this._initDataSourceState(this.dataSource)
 
   if (isObject(this.expandable)) {
-    const childrenColumnName =
-      (isObject(this.expandable) && this.expandable.childrenColumnName) ||
-      'children'
-
-    this.childrenColumnName = childrenColumnName
-
     const entireDataSource = this._genDataByExpandable()
     const expandedRowKeys =
       isObject(this.expandable) && isValidArray(this.expandable.expandedRowKeys)
