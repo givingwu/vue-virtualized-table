@@ -20,6 +20,7 @@ import Header from './TableHeader/index'
 import FixedHeader from './TableHeader/FixedHeader'
 import ResizeObserver from 'vue-size-observer'
 import { forceScroll } from './utils/dom/scroll'
+import './table.css'
 
 export default {
   name: 'VirtualTable',
@@ -176,6 +177,10 @@ export default {
     this.debouncedUpdateColumn = debounce(this.updateColumnResize, 16)
   },
 
+  mounted() {
+    this.$ready = true
+  },
+
   beforeDestroy() {
     this.rowKeyCache = null
     this.tableComponents = null
@@ -209,14 +214,14 @@ export default {
     renderBlock(block, name) {
       const content =
         typeof block === 'function' ? block(this.dataSource) : block
-      const height = this.scroll.y
+      // const height = this.scroll.y
       let style = {}
 
-      if (name === 'placeholder' && height) {
+      /* if (name === 'placeholder' && height) {
         style = {
           height: height + 'px'
         }
-      }
+      } */
 
       return content ? (
         <div key={name} class={`${this.prefixCls}-${name}`} style={style}>
@@ -317,18 +322,14 @@ export default {
     },
 
     updateColumnResize() {
-      console.time('cancelRef')
       const cancelRef = useRaf(() => {
         this.colWidths = {
           ...this.columnsWidthCache
         }
 
-        console.time('cancelRefAgain')
         const cancelRefAgain = useRaf(() => {
           cancelRef()
           cancelRefAgain()
-          console.timeEnd('cancelRef')
-          console.timeEnd('cancelRefAgain')
         })
 
         isFunction(this.debouncedUpdateColumn.cancel) &&
@@ -393,7 +394,7 @@ export default {
 
     if (fixHeader) {
       scrollYStyle = {
-        overflowY: 'scroll',
+        overflow: 'scroll',
         maxHeight: scroll.y + 'px'
       }
     }
