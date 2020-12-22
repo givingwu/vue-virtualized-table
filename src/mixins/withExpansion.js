@@ -8,13 +8,14 @@ import {
 import { isString, isNumber, isObject, isValidArray } from '../utils/type'
 
 export function data() {
+  this._initDataSourceState(this.dataSource)
+
   if (isObject(this.expandable)) {
     const childrenColumnName =
       (isObject(this.expandable) && this.expandable.childrenColumnName) ||
       'children'
 
     this.childrenColumnName = childrenColumnName
-    this._initDataSourceState(this.dataSource)
 
     const entireDataSource = this._genDataByExpandable()
     const expandedRowKeys =
@@ -41,8 +42,9 @@ export const watch = {
       return this._clearExpansionSideEffects()
     }
 
+    this._initDataSourceState(data)
+
     if (isObject(this.expandable)) {
-      this._initDataSourceState(data)
       this.entireDataSource = this._genDataByExpandable()
 
       if (!isValidArray(this.expandedRowKeys)) {
@@ -285,6 +287,9 @@ export const methods = {
       this.flattenedPresets = null
     } else {
       this.flattenedData = flattenData(data, this.childrenColumnName)
+      this.flattenedData.forEach((item, index) => {
+        item.__flatIndex = index
+      })
       this.flattenedPathMap = flattenMap(
         data,
         this.getRowKey,

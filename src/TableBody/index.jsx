@@ -76,7 +76,7 @@ export default {
             rowKey={key}
             record={record}
             recordKey={key}
-            index={index}
+            index={isNaN(+record.__flatIndex) ? index : record.__flatIndex}
             fixedInfoList={fixedInfoList}
             flattenColumns={flattenColumns}
             rowComponent={trComponent}
