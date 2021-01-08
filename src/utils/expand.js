@@ -157,7 +157,7 @@ export function insertDataFromStart(
     record: object,
     onExpand: function,
     expanded: boolean,
-    expandIcon: object,
+    expandable: boolean,
  * }} ExpandConfig
  * @param {import("@/components/virtualized-table/utils/vue").CreateElement} h
  * @param {ExpandConfig} expandConfig
