@@ -131,7 +131,9 @@ export default {
                 }}
                 class={`${prefixCls}-row-indent indent-level-${indent}`}
               />,
-              renderExpandIcon(h, {
+              (isFunction(expandable.expandIcon)
+                ? expandable.expandIcon
+                : renderExpandIcon)(h, {
                 prefixCls,
                 expanded,
                 expandable: isFunction(expandable.rowExpandable)
