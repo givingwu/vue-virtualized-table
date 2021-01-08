@@ -281,7 +281,7 @@ export const methods = {
   _initDataSourceState(data = []) {
     if (!isValidArray(data)) {
       this.flattenedData = null
-      this.flattenedPresets = null
+      this.flattenedPathMap = null
     } else {
       this.flattenedData = flattenData(data, this.childrenColumnName)
       this.flattenedData.forEach((item, index) => {
@@ -425,7 +425,7 @@ export const methods = {
 
   _clearExpansionSideEffects() {
     this.entireDataSource = this.flattenedData = this.expandedRowKeys = []
-    this.flattenedPathMap = null
+    this.flattenedPathMap = this.__initializedEntireData = null
   }
 }
 
