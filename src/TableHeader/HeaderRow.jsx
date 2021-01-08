@@ -53,6 +53,13 @@ export default {
             direction
           )
 
+          // fix: TableHeaderRow 不渲染 className 否则样式可能引起 table 渲染异常
+          cell.column = {
+            ...column,
+            class: '',
+            className: ''
+          }
+
           const options = {
             props: { ...cell, ...fixedInfo, children: [column.label] }
           }
