@@ -3,7 +3,10 @@
     <h1>Vue Virtualized Table</h1>
     <Form inline label-suffix=":" :style="{ marginBottom: 16 }">
       <FormItem>
-        <TableExpandAction @expand="handleExpandTable">
+        <TableExpandAction :current="
+              state.expandable.defaultExpandAllRows ||
+                state.expandable.expandDepth
+            " @expand="handleExpandTable">
           <Button size="small" icon="arrow-down" type="primary" plain>展开/收起</Button>
         </TableExpandAction>
       </FormItem>
@@ -128,7 +131,7 @@ export default {
         rowHeight: 55,
         footer: undefined,
         useVirtual: true,
-        xScroll: 'fixed',
+        xScroll: undefined,
         yScroll: !!scroll.y,
         rowSelection: {},
         tableLayout: 'fixed'
@@ -262,14 +265,19 @@ export default {
     },
 
     handleExpandTable(expand, value) {
+      const { expandable } = this.state
+
       if (typeof value === 'number') {
         expandable.defaultExpandAllRows = null
 
         if (expand) {
           expandable.expandDepth = value
         } else {
-          if ((value -= 1) >= 0) {
+          if ((value -= 1) > 0) {
             expandable.expandDepth = value
+          } else {
+            expandable.expandDepth = null
+            expandable.defaultExpandAllRows = false
           }
         }
       } else if (typeof value === 'boolean') {
@@ -281,7 +289,7 @@ export default {
           expandable.defaultExpandAllRows = false
         }
       }
-    }
+    },
   }
 }
 </script>
