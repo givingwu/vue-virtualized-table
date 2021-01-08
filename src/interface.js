@@ -198,7 +198,7 @@ export const TableProps = {
   // The row height number of per row in TableBody
   rowHeight: { type: Number },
   // The row index to specify where the view scroll to
-  scrollToRow: { type: Number, default: 0 },
+  scrollToRow: { type: Number, default: -1 },
 
   prefixCls: {
     type: String,
