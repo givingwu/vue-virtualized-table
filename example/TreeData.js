@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     id: 1,
     name: '鸡蛋仔',
@@ -585,8 +585,8 @@ export default [
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
     shopId: 29
-  }
-  /* {
+  },
+  {
     id: 30,
     name: '好滋好味鸡蛋仔',
     category: '江浙小吃、小吃零食',
@@ -684,9 +684,14 @@ export default [
     address: '上海市普陀区真北路',
     shop: '王小虎夫妻店',
     shopId: 40
-  } */
+  }
 ]
 
+for (let index = 41; index < 10000; index++) {
+  data.push({ ...data[data.length - 1], id: index })
+}
+
+export default data
 export const tree = {
   label: 'root',
   value: 'root',
