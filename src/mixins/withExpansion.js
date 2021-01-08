@@ -328,24 +328,26 @@ export const methods = {
       return this.expandedRowKeys
     }
 
-    if (isObject(this.expandable)) {
-      const {
-        expandDepth = null,
-        expandedRowKeys = [],
-        defaultExpandAllRows = null
-      } = this.expandable || {}
+    let nextExpandedRowKeys = this.expandedRowKeys
 
-      if (isValidArray(expandedRowKeys)) {
-        return expandedRowKeys
-      } else if (typeof defaultExpandAllRows === 'boolean') {
-        return this._genExpandedKeys(this.entireDataSource)
-      } else if (expandDepth && isNumber(expandDepth)) {
-        return this._genExpandedKeysWithDepth(
-          this.entireDataSource,
-          expandDepth
-        )
-      }
+    const {
+      expandDepth = null,
+      expandedRowKeys = [],
+      defaultExpandAllRows = null
+    } = this.expandable || {}
+
+    if (isValidArray(expandedRowKeys)) {
+      nextExpandedRowKeys = expandedRowKeys
+    } else if (typeof defaultExpandAllRows === 'boolean') {
+      nextExpandedRowKeys = this._genExpandedKeys(this.entireDataSource)
+    } else if (expandDepth && isNumber(expandDepth)) {
+      nextExpandedRowKeys = this._genExpandedKeysWithDepth(
+        this.entireDataSource,
+        expandDepth
+      )
     }
+
+    return nextExpandedRowKeys
   },
 
   /**
