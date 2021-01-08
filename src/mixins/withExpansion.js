@@ -5,7 +5,13 @@ import {
   genExpandedKeyPaths,
   findValidChildrenKeys
 } from '../utils/expand'
-import { isString, isNumber, isObject, isValidArray } from '../utils/type'
+import {
+  isString,
+  isNumber,
+  isObject,
+  isValidArray,
+  isArray
+} from '../utils/type'
 
 export function data() {
   const childrenColumnName =
@@ -16,9 +22,9 @@ export function data() {
   this._initDataSourceState(this.dataSource)
 
   if (isObject(this.expandable)) {
-    const entireDataSource = this._genDataByExpandable()
+    const entireDataSource = this._updateDataByExpandable()
     const expandedRowKeys =
-      isObject(this.expandable) && isValidArray(this.expandable.expandedRowKeys)
+      isObject(this.expandable) && isArray(this.expandable.expandedRowKeys)
         ? this.expandable.expandedRowKeys
         : isValidArray(this.expandedRowKeys)
         ? this.expandedRowKeys
@@ -44,19 +50,11 @@ export const watch = {
     this._initDataSourceState(data)
 
     if (isObject(this.expandable)) {
-      this.entireDataSource = this._genDataByExpandable()
+      this.entireDataSource = this._updateDataByExpandable()
+      this.expandedRowKeys = this._updateExpandedKeys()
 
-      if (!isValidArray(this.expandedRowKeys)) {
-        const depth = this.expandable.expandDepth
-
-        if (depth) {
-          this.expandedRowKeys = this._genExpandedKeysWithDepth(
-            this.entireDataSource,
-            depth
-          )
-        } else {
-          this.expandedRowKeys = this._genExpandedKeys(this.entireDataSource)
-        }
+      if (!this.__initializedEntireData) {
+        this.__initializedEntireData = true
       }
     }
   },
@@ -301,7 +299,11 @@ export const methods = {
     }
   },
 
-  _genDataByExpandable() {
+  _updateDataByExpandable() {
+    if (isValidArray(this.expandedRowKeys) || this.__initializedEntireData) {
+      return this._genDataByKeys(this.expandedRowKeys)
+    }
+
     const {
       expandDepth = null,
       expandedRowKeys = [],
@@ -309,10 +311,6 @@ export const methods = {
     } = this.expandable || {}
 
     let entireDataSource = this.dataSource
-
-    if (isValidArray(this.expandedRowKeys)) {
-      return this._genDataByKeys(this.expandedRowKeys)
-    }
 
     if (isValidArray(expandedRowKeys)) {
       entireDataSource = this._genDataByKeys(expandedRowKeys)
@@ -323,6 +321,31 @@ export const methods = {
     }
 
     return entireDataSource
+  },
+
+  _updateExpandedKeys() {
+    if (isValidArray(this.expandedRowKeys) || this.__initializedEntireData) {
+      return this.expandedRowKeys
+    }
+
+    if (isObject(this.expandable)) {
+      const {
+        expandDepth = null,
+        expandedRowKeys = [],
+        defaultExpandAllRows = null
+      } = this.expandable || {}
+
+      if (isValidArray(expandedRowKeys)) {
+        return expandedRowKeys
+      } else if (typeof defaultExpandAllRows === 'boolean') {
+        return this._genExpandedKeys(this.entireDataSource)
+      } else if (expandDepth && isNumber(expandDepth)) {
+        return this._genExpandedKeysWithDepth(
+          this.entireDataSource,
+          expandDepth
+        )
+      }
+    }
   },
 
   /**
