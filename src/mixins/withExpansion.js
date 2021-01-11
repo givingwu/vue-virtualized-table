@@ -5,13 +5,7 @@ import {
   genExpandedKeyPaths,
   findValidChildrenKeys
 } from '../utils/expand'
-import {
-  isString,
-  isNumber,
-  isObject,
-  isValidArray,
-  isArray
-} from '../utils/type'
+import { isString, isNumber, isObject, isValidArray } from '../utils/type'
 
 export function data() {
   const childrenColumnName =
@@ -19,21 +13,11 @@ export function data() {
     'children'
 
   this.childrenColumnName = childrenColumnName
-  this._initDataSourceState(this.dataSource)
 
   if (isObject(this.expandable)) {
-    const entireDataSource = this._updateDataByExpandable()
-    const expandedRowKeys =
-      isObject(this.expandable) && isArray(this.expandable.expandedRowKeys)
-        ? this.expandable.expandedRowKeys
-        : isValidArray(this.expandedRowKeys)
-        ? this.expandedRowKeys
-        : this._genExpandedKeys(entireDataSource)
-
     return {
-      // The entire data source after expand per item by depth in tree-like data
-      entireDataSource,
-      expandedRowKeys
+      entireDataSource: [],
+      expandedRowKeys: []
     }
   }
 
@@ -42,19 +26,22 @@ export function data() {
 
 // only watch those properties form `expandable` prop
 export const watch = {
-  dataSource(data) {
-    if (!isValidArray(data)) {
-      return this._clearExpansionSideEffects()
-    }
+  dataSource: {
+    immediate: true,
+    handler(data) {
+      if (!isValidArray(data)) {
+        return this._clearExpansionSideEffects()
+      }
 
-    this._initDataSourceState(data)
+      this._initDataSourceState(data)
 
-    if (isObject(this.expandable)) {
-      this.entireDataSource = this._updateDataByExpandable()
-      this.expandedRowKeys = this._updateExpandedKeys()
+      if (isObject(this.expandable)) {
+        this.entireDataSource = this._updateDataByExpandable()
+        this.expandedRowKeys = this._updateExpandedKeys()
 
-      if (!this.__initializedEntireData) {
-        this.__initializedEntireData = true
+        if (!this.__initializedEntireData) {
+          this.__initializedEntireData = true
+        }
       }
     }
   },
