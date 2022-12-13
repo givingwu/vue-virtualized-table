@@ -1,6 +1,16 @@
+# NOTE
+
+Now there are many better products, more comprehensive maintenance, more powerful functions, and better data structures. We recommend you to use better virtual scrolling list projects:
+
++ [Surely Table](https://www.surely.cool) Commercially Watermarked, Vue V3
++ [vxetable](https://vxetable.cn) Non commercial, support Vue V2, V3
+
 # Vue Virtualized Table
 
 The second version of implementation of `vue-virtual-table` component, it was inspired from [rc-table](https://github.com/react-component/table) and [ant-table](https://ant.design/components/table), API design is 60%+ consistent. Or you could think I translated them from React to Vue and added *virtualize scroll* feature.
+
+
+> **As time goes on, I think Vue2 has become obsolete, <font color="red">So I decided it is no longer maintained</font>.**
 
 ## Features
 1. Support **customize render**
