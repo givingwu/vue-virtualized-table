@@ -326,7 +326,7 @@ export const methods = {
     if (isValidArray(expandedRowKeys)) {
       nextExpandedRowKeys = expandedRowKeys
     } else if (typeof defaultExpandAllRows === 'boolean') {
-      nextExpandedRowKeys = this._genExpandedKeys(this.entireDataSource)
+      defaultExpandAllRows && (nextExpandedRowKeys = this._genExpandedKeys(this.entireDataSource))
     } else if (expandDepth && isNumber(expandDepth)) {
       nextExpandedRowKeys = this._genExpandedKeysWithDepth(
         this.entireDataSource,
